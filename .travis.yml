@@ -1,0 +1,14 @@
+sudo: required 
+language: node_js
+node_js:
+    - "stable"
+    
+services: 
+    - docker
+
+before_install: 
+    - docker build -t getting-started .
+script:     
+    - docker run -e CI=true -dp 80:80 getting-started
+    
+    
